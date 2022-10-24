@@ -6,9 +6,9 @@ dataSources:
     name: GoodieBag
     network: arbitrum-one
     source:
-      address: "0x98eb67d78081A3eACF5Be2a43Bca261b867A472D"
+      address: "0x176Dca0287F75759E55b08E07a2AAD5aCBcd3E1A"
       abi: GoodieBag
-      startBlock: 20516414
+      startBlock: 30067976
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.6
@@ -21,4 +21,24 @@ dataSources:
       eventHandlers:
         - event: MultiBuy(address,uint256)
           handler: handleMultiBuy
+      file: GoodieBag/GoodieBag.wasm
+  - kind: ethereum
+    name: Social
+    network: arbitrum-one
+    source:
+      address: "0x63324d0b06fe2Ff0055FE9F0ba20fA6Ed0f97660"
+      abi: Social
+      startBlock: 30067976
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.6
+      language: wasm/assemblyscript
+      entities:
+        - MultiBuy
+      abis:
+        - name: Social
+          file: Social/abis/Social.json
+      eventHandlers:
+        - event: UpdatedStratergy(uint256,string,string,address[],address,uint256)
+          handler: handleStratergy
       file: GoodieBag/GoodieBag.wasm

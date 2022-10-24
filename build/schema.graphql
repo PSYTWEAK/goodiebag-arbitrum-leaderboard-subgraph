@@ -1,4 +1,19 @@
 type User @entity {
   id: ID!
-  value: BigInt! # uint256
+  totalVolume: BigInt! # uint256
+  totalBuys: BigInt! # uint256
+  stratergies: [Stratergy!]! 
 }
+
+type Stratergy @entity {
+  id: ID!
+  name: String! 
+  description: String!
+  # an array of token addresses
+  tokens: [String!]!
+  creator: User!
+  fee: BigInt! # uint256
+}
+
+
+
